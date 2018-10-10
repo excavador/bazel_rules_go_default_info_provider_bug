@@ -1,0 +1,17 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+filegroup(
+	name = "source",
+	srcs = ["main.go"],
+)
+
+go_library(
+	name = "go_default_library",
+	importpath = "github.com/excavador/bazel_rules_go_default_info_provider_bug",
+	srcs = [":source"],
+)
+
+go_binary(
+	name = "main",
+	embed = [":go_default_library"]
+)
